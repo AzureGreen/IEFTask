@@ -1,0 +1,120 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: #fff;
+}
+
+header {
+  background-color: #36546a;
+}
+header .navBar ul {
+  list-style: none;
+  float: right;
+}
+header .navBar ul li {
+  display: inline-block;
+}
+header .navBar a {
+  line-height: 60px;
+  color: #fff;
+  transition: background-color 0.8s;
+}
+header .navBar a .link, header .navBar a .logo {
+  padding: 20px 20px 0;
+}
+header .navBar a:hover {
+  background-color: #2d6995;
+}
+header .maxim {
+  padding: 30px 200px 66px;
+  margin-bottom: 30px;
+}
+header .maxim h2, header .maxim h4 {
+  color: #fff;
+  text-align: center;
+}
+header .maxim h2 {
+  padding-bottom: 15px;
+}
+header .maxim h4 {
+  padding-top: 15px;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.article {
+  width: 60%;
+  margin: 0 auto;
+  padding: 40px 0;
+  color: #000;
+}
+.article .block {
+  box-shadow: #d3d3c1 0 0 10px;
+  transition: box-shadow 0.5s;
+}
+.article .block h3 {
+  margin: 28px 25px 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #377092;
+  display: inline-block;
+  font-size: 30px;
+  transition: padding-right 0.5s;
+}
+.article .block h3 a {
+  transition: color 0.5s;
+}
+.article .block h3:hover {
+  padding-right: 30px;
+}
+.article .block h3:hover a {
+  color: #377092;
+}
+.article .block h4 {
+  margin: 28px 25px;
+  font-size: 16px;
+  font-weight: 400;
+  float: right;
+}
+.article .block p {
+  padding: 20px 25px 30px;
+}
+.article .block:hover {
+  box-shadow: #b2b2a5 0 0 20px;
+}
+
+.showmore {
+  width: 100px;
+  margin: 30px auto;
+  padding: 12px 60px;
+  background-color: #377092;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.showmore:hover {
+  background-color: #5692b5;
+}
+
+footer {
+  margin-top: 40px;
+  background-color: #36546a;
+  text-align: center;
+}
+footer p {
+  padding: 16px 0;
+  color: #fff;
+  font-size: 0.8em;
+}
+footer a {
+  color: #fff;
+}
+
+/*# sourceMappingURL=index.css.map */
