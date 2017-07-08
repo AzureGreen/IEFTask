@@ -15,6 +15,7 @@
 		const HOST = 'localhost';
 		const DB = 'normal';
 
+
 		/**
 		 * connect to db
 		 * @return bool ,if connect succ ret true, otherwise false

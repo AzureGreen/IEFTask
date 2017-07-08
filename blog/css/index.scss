@@ -5,12 +5,15 @@
 
 body {
 	color: #fff;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, PingFang SC, Source Han Sans CN, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
 }
 
 header {
 	background-color: #36546a;
 	
 	.navBar {
+		font-size: 1.4em;
 
 		ul {
 			list-style: none;
@@ -28,8 +31,7 @@ header {
 
 			.link, .logo {
 				padding: 20px 20px 0;
-			}
-			
+			}	
 		}
 
 		a:hover {
@@ -37,9 +39,10 @@ header {
 		}
 	}
 
-
 	.maxim {
-		padding: 30px 200px 66px;
+		width: 70%;
+		padding: 30px 0 66px;
+		margin: 0 auto;
 		margin-bottom: 30px;
 
 		h2, h4 {
@@ -48,47 +51,58 @@ header {
 		}
 
 		h2 {
+			font-size: 1.6em;
+			font-weight: 500;
 			padding-bottom: 15px;
 		}
 
 		h4 {
+			font-size: 1.1em;
+			font-weight: 400;
 			padding-top: 15px;
 		}
 	}
-
 }
 
 a {
-	color: #000;
 	text-decoration: none;
 	display: inline-block;
 }
 
+.article-block {
+	display: block;
+}
 
 .article {
-	width: 60%;
+	//width: 60%;
 	margin: 0 auto;
 	padding: 40px 0;
-	color: #000;
+	color: #555;
 	
 	.block {
+		width: 60%;
+		margin: 0 auto;
+		padding: 36px;
 		box-shadow: #d3d3c1 0 0 10px;
 		transition: box-shadow 0.5s;
 
-		h3 {
-			margin: 28px 25px 20px;
-			padding-bottom: 10px;
+		/* article block style */
+
+		.article-title {
+			margin-bottom: 30px;
+			padding-bottom: 16px;
 			border-bottom: 3px solid #377092;
 			display: inline-block;
 			font-size: 30px;
 			transition: padding-right 0.5s;
 
 			a {
+				color: rgba(0, 0, 0, 0.8);
 				transition: color 0.5s;
 			}
 		}
 
-		h3:hover {
+		.article-title:hover {
 			padding-right: 30px;
 			
 			a {
@@ -97,23 +111,77 @@ a {
 
 		}
 
-		h4 {
-			margin: 28px 25px;
+		.article-date {
 			font-size: 16px;
 			font-weight: 400;
 			float: right;
 		}
 
-		p {
-			padding: 20px 25px 30px;
+		.article-description {
+			color: #89867e;
+			padding: 30px 25px;
 		}
 
+		/* article detail style */
+		.title {
+			margin: 20px 0 10px;
+			font-size: 30px;
+			text-align: center;
+			color: #555;
+		}
 
+		.date {
+			font-weight: 400;
+			font-size: 15px;
+			text-align: center;
+		}
+		
+		.parting-line {
+			width: 90%;
+			height: 2px;
+			margin: 30px auto;
+			background-color: #377092;
+		}	
+	
+		.content {
+			width: 90%;
+			margin: 0 auto;
+			line-height: 2em;
+		}
+
+		.pre-next {
+			
+			.pre, .next {
+				witdh: 47%;
+				display: inline-block;
+    			overflow: hidden;
+
+				a {
+					color: #444;
+					span {
+						display: inline-block;
+						border-bottom: 1px solid #ccc;
+						font-size: 14px;
+					}
+				}
+			}
+
+			.next {
+				float: right;
+				span {
+					text-align: right;
+				}
+			}
+		}
+		
 	}
 
 	.block:hover {
 		box-shadow: #b2b2a5 0 0 20px;
 	}
+
+	
+
 }
 
 
@@ -124,6 +192,7 @@ a {
 	background-color: #377092;
 	border-radius: 5px;
 	cursor: pointer;
+	text-align: center;
 
 	transition: background-color 0.5s;
 

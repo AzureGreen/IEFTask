@@ -5,10 +5,15 @@
 
 body {
   color: #fff;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, PingFang SC, Source Han Sans CN, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
 }
 
 header {
   background-color: #36546a;
+}
+header .navBar {
+  font-size: 1.4em;
 }
 header .navBar ul {
   list-style: none;
@@ -29,7 +34,9 @@ header .navBar a:hover {
   background-color: #2d6995;
 }
 header .maxim {
-  padding: 30px 200px 66px;
+  width: 70%;
+  padding: 30px 0 66px;
+  margin: 0 auto;
   margin-bottom: 30px;
 }
 header .maxim h2, header .maxim h4 {
@@ -37,53 +44,106 @@ header .maxim h2, header .maxim h4 {
   text-align: center;
 }
 header .maxim h2 {
+  font-size: 1.6em;
+  font-weight: 500;
   padding-bottom: 15px;
 }
 header .maxim h4 {
+  font-size: 1.1em;
+  font-weight: 400;
   padding-top: 15px;
 }
 
 a {
-  color: #000;
   text-decoration: none;
   display: inline-block;
 }
 
+.article-block {
+  display: block;
+}
+
 .article {
-  width: 60%;
   margin: 0 auto;
   padding: 40px 0;
-  color: #000;
+  color: #555;
 }
 .article .block {
+  width: 60%;
+  margin: 0 auto;
+  padding: 36px;
   box-shadow: #d3d3c1 0 0 10px;
   transition: box-shadow 0.5s;
+  /* article block style */
+  /* article detail style */
 }
-.article .block h3 {
-  margin: 28px 25px 20px;
-  padding-bottom: 10px;
+.article .block .article-title {
+  margin-bottom: 30px;
+  padding-bottom: 16px;
   border-bottom: 3px solid #377092;
   display: inline-block;
   font-size: 30px;
   transition: padding-right 0.5s;
 }
-.article .block h3 a {
+.article .block .article-title a {
+  color: rgba(0, 0, 0, 0.8);
   transition: color 0.5s;
 }
-.article .block h3:hover {
+.article .block .article-title:hover {
   padding-right: 30px;
 }
-.article .block h3:hover a {
+.article .block .article-title:hover a {
   color: #377092;
 }
-.article .block h4 {
-  margin: 28px 25px;
+.article .block .article-date {
   font-size: 16px;
   font-weight: 400;
   float: right;
 }
-.article .block p {
-  padding: 20px 25px 30px;
+.article .block .article-description {
+  color: #89867e;
+  padding: 30px 25px;
+}
+.article .block .title {
+  margin: 20px 0 10px;
+  font-size: 30px;
+  text-align: center;
+  color: #555;
+}
+.article .block .date {
+  font-weight: 400;
+  font-size: 15px;
+  text-align: center;
+}
+.article .block .parting-line {
+  width: 90%;
+  height: 2px;
+  margin: 30px auto;
+  background-color: #377092;
+}
+.article .block .content {
+  width: 90%;
+  margin: 0 auto;
+  line-height: 2em;
+}
+.article .block .pre-next .pre, .article .block .pre-next .next {
+  witdh: 47%;
+  display: inline-block;
+  overflow: hidden;
+}
+.article .block .pre-next .pre a, .article .block .pre-next .next a {
+  color: #444;
+}
+.article .block .pre-next .pre a span, .article .block .pre-next .next a span {
+  display: inline-block;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+.article .block .pre-next .next {
+  float: right;
+}
+.article .block .pre-next .next span {
+  text-align: right;
 }
 .article .block:hover {
   box-shadow: #b2b2a5 0 0 20px;
@@ -96,6 +156,7 @@ a {
   background-color: #377092;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
   transition: background-color 0.5s;
 }
 

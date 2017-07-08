@@ -3,23 +3,24 @@
 	include_once 'database.php';
 	
 	/**
-	* a class manage block of articles
+	* a class manage blocks of articles
 	*/
 	class ArtilceBlock
 	{
-		private $articleNum = null;   // 文章总数
-		private $blockNum = null;     // 文章分块数
-		private $blockSize = null;    // 每一分块有多少篇文章
+		private $articleNum = null;   // int 文章总数
+		private $blockNum = null;     // int 文章分块数
+		private $blockSize = null;    // int 每一分块有多少篇文章
 
-		private $currentBlock = null;    // 指示当前获取、显示哪一块
-		
-		private $blockInfoArray = null;
+		private $wantedBlock = null;    // int 指示当前获取、显示哪一块
 
-		private $dbObject = null;
+		private $dbObject = null;    // object database object 
 
-		function __construct($currentBlock, $blockSize)
+		/**
+		 * construct function
+		 * @param int $blockSize the size of each article block
+		 */
+		function __construct($blockSize)
 		{
-			$this->currentBlock = $currentBlock;
 			$this->blockSize = $blockSize;
 
 			$this->dbObject = new Database();  // 创建数据库对象并连接数据库
@@ -36,9 +37,7 @@
 
 			$this->setBlockNum();
 
-			$this->setBlockArray();
 		}
-
 
 		/**
 		 * set the block num of articles
@@ -55,23 +54,27 @@
 		}
 
 		/**
-		 * set the block array of articles
-		 * @return void
+		 * get the num of article block num
+		 * @return int block num
 		 */
-		public function setBlockArray()
+		public function getBlockNum()
 		{
-			$sql = "SELECT * FROM article ORDER BY dateline DESC LIMIT ".($this->blockSize * ($this->currentBlock - 1)).",".$this->blockSize;
-
-			$this->blockInfoArray = $this->dbObject->query($sql);
+			return $this->blockNum;
 		}
 
 		/**
 		 * return private member of blockinfoarray
-		 * @return array :blockinfoarray
+		 * @param  int $wantedBlock the block which is wanted
+		 * @return array              array with block article info
 		 */
-		public function getBlockInfo()
+		public function getBlockInfo($wantedBlock)
 		{
-			return $this->blockInfoArray;
+
+			$this->wantedBlock = $wantedBlock;
+
+			$sql = "SELECT id, title, dateline, description FROM article ORDER BY dateline DESC LIMIT ".($this->blockSize * ($this->wantedBlock - 1)).",".$this->blockSize;
+
+			return $this->dbObject->query($sql);
 		}
 	}
 

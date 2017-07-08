@@ -16,11 +16,8 @@
 
 <section class="container">
 	
-	<div class="article-block"></div>
-	
-<?php
-	include_once './components/showmore.php';
-?>
+	<div class="article-detail"></div>
+
 
 </section>
 
@@ -30,6 +27,6 @@
 
 </body>
 
-<script src="./js/home.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="./js/article.js" type="text/javascript" charset="utf-8" async defer></script>
 
 </html>

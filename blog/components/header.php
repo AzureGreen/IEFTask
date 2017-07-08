@@ -7,7 +7,7 @@
 		</a>
 		<ul class="nav-ul">
 			<li>
-				<a href="../content/article.php">
+				<a href="./index.php">
 					<div class="link">
 						<span>首页</span>
 					</div>
