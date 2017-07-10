@@ -5,21 +5,12 @@
 	/**
 	* a class about the detail info of article
 	*/
-	class ArticleDetail
+	class ArticleDetail extends Database
 	{
-		private $dbObject = null;    // object database object 
-
 		function __construct()
 		{
-			$this->dbObject = new Database();  // 创建数据库对象并连接数据库
-
-			if (!$this->dbObject) {
-				echo "创建数据库连接错误";
-				exit;
-			}
-
-			if (!$this->dbObject->getConnect()) {
-				echo "error";
+			if (!$this->getConnect()) {
+				echo "connect db error";
 				exit;
 			}
 		}
@@ -31,23 +22,23 @@
 		 */
 		public function getDetailInfo($id)
 		{
-			$sql = "SELECT title, dateline, content FROM article WHERE id = ".$id;
+			$sql = "SELECT a_Title, a_Date, a_Content FROM article WHERE a_id = ".$id;
 
-			return $this->dbObject->query($sql);
+			return $this->query($sql);
 		}
 
 		public function getPreInfo($id)
 		{
-			$sql = "SELECT id, title FROM article WHERE id < ".$id." ORDER BY dateline DESC";
+			$sql = "SELECT a_Id, a_Title FROM article WHERE a_Id < ".$id." ORDER BY a_Date DESC";
 
-			return $this->dbObject->query($sql);
+			return $this->query($sql);
 		}
 
 		public function getNextInfo($id)
 		{
-			$sql = "SELECT id, title FROM article WHERE id > ".$id." ORDER BY dateline ASC";
+			$sql = "SELECT a_Id, a_Title FROM article WHERE a_Id > ".$id." ORDER BY a_Date ASC";
 
-			return $this->dbObject->query($sql);
+			return $this->query($sql);
 		}
 	}
 

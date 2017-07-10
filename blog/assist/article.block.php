@@ -5,15 +5,13 @@
 	/**
 	* a class manage blocks of articles
 	*/
-	class ArtilceBlock
+	class ArtilceBlock extends Database
 	{
 		private $articleNum = null;   // int 文章总数
 		private $blockNum = null;     // int 文章分块数
 		private $blockSize = null;    // int 每一分块有多少篇文章
 
 		private $wantedBlock = null;    // int 指示当前获取、显示哪一块
-
-		private $dbObject = null;    // object database object 
 
 		/**
 		 * construct function
@@ -23,20 +21,12 @@
 		{
 			$this->blockSize = $blockSize;
 
-			$this->dbObject = new Database();  // 创建数据库对象并连接数据库
-
-			if (!$this->dbObject) {
-				echo "创建数据库连接错误";
-				exit;
-			}
-
-			if (!$this->dbObject->getConnect()) {
-				echo "error";
+			if (!$this->getConnect()) {
+				echo "connect error";
 				exit;
 			}
 
 			$this->setBlockNum();
-
 		}
 
 		/**
@@ -47,7 +37,7 @@
 		{
 			$sql = "SELECT COUNT(*) FROM article";
 
-			if ($result = $this->dbObject->query($sql)) {
+			if ($result = $this->query($sql)) {
 				$this->articleNum = $result[0]["COUNT(*)"];
 				$this->blockNum = ceil($this->articleNum / $this->blockSize);
 			}
@@ -72,9 +62,9 @@
 
 			$this->wantedBlock = $wantedBlock;
 
-			$sql = "SELECT id, title, dateline, description FROM article ORDER BY dateline DESC LIMIT ".($this->blockSize * ($this->wantedBlock - 1)).",".$this->blockSize;
+			$sql = "SELECT a_Id, a_Title, a_Date, a_Introduction FROM article ORDER BY a_Date DESC LIMIT ".($this->blockSize * ($this->wantedBlock - 1)).",".$this->blockSize;
 
-			return $this->dbObject->query($sql);
+			return $this->query($sql);
 		}
 	}
 

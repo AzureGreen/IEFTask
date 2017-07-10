@@ -7,13 +7,13 @@
 	*/
 	class Database
 	{
-		private $pdo;
+		private $pdo;     /* interface to db */
 		
 		const DBMS = 'mysql';
-		const USERNANE = "root";
-		const PASSWORD = "";
+		const USERNANE = "";   /* fill with username */
+		const PASSWORD = '';   /* fill with password */
 		const HOST = 'localhost';
-		const DB = 'normal';
+		const DB = '';          /* fill with dbname */
 
 
 		/**

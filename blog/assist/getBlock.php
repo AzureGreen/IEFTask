@@ -11,42 +11,39 @@
 	$showedBlockNum = 1;
 
 	if ($_SERVER["REQUEST_METHOD"] == "GET") {
-		
-	} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
-		
 		getWantedBlock();
 	}
 
 	function getWantedBlock()
 	{	
-		$showedBlockNum = $_POST["wantedblock"];
+		$showedBlockNum = intval($_GET["wantedblock"]);
 
 		if ($showedBlockNum > $GLOBALS["artilceBlockObject"]->getBlockNum()) {
-			echo '{"success":false, "msg":"没有更多文章啦！"}';
+			echo '{"feedback":""}';
 			return;
 		}
 
 		$artilceBlockInfoArray =  $GLOBALS["artilceBlockObject"]->getBlockInfo($showedBlockNum);    /* 传入想要的第几块的编码 */
 
-		$msg = "[";
+		$feedback = "[";
 
 		foreach ($artilceBlockInfoArray as $key => $value) {
 
 			if ($artilceBlockInfoArray['0'] != $value) {
-				$msg .= ',';
+				$feedback .= ',';
 			}
 
-			$msg .= '{
-				"id":"'.$value["id"].'",
-				"title":"'.$value["title"].'",
-				"dateline":"'.$value["dateline"].'",
-				"description":"'.$value["description"].'"
+			$feedback .= '{
+				"id":"'.$value["a_Id"].'",
+				"title":"'.$value["a_Title"].'",
+				"date":"'.$value["a_Date"].'",
+				"introduction":"'.$value["a_Introduction"].'"
 			}';
 		}
 
-		$msg .= "]";
+		$feedback .= "]";
 
-		echo '{"success":true, "msg":' . $msg . '}';
+		echo '{"feedback":' . $feedback . '}';
 		
 	}
 

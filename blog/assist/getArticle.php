@@ -11,11 +11,8 @@
 	$articleDetailObject = new ArticleDetail();
 
 	if ($_SERVER["REQUEST_METHOD"] == "GET") {
-		
-	} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
-		
-		getArticleDetail($_POST["articleid"]);
-	}
+		getArticleDetail(intval($_GET["articleid"]));
+	} 
 
 	function getArticleDetail($articleId)
 	{
@@ -25,30 +22,35 @@
 
 		$articleNextInfo = $GLOBALS["articleDetailObject"]->getNextInfo($articleId);  /* get next title of current article*/
 
+		if (!$articleDetailInfo) {
+			echo '{"feedback":""}';
+			return;
+		}
+
 		/* if return null, showed that no pre or next */
 		if (!$articlePreInfo) {
-			$articlePreInfo[] = array("id" => "", "title" => "");
+			$articlePreInfo[] = array("a_Id" => "", "a_Title" => "");
 		}
 
 		if (!$articleNextInfo) {
-			$articleNextInfo[] = array("id" => "", "title" => "");
+			$articleNextInfo[] = array("a_Id" => "", "a_Title" => "");
 		}
 
-		$msg = '{
-			"title":"'.$articleDetailInfo[0]["title"].'",
-			"dateline":"'.$articleDetailInfo[0]["dateline"].'",
-			"content":"'.$articleDetailInfo[0]["content"].'",
+		$feedback = '{
+			"title":"'.$articleDetailInfo[0]["a_Title"].'",
+			"date":"'.$articleDetailInfo[0]["a_Date"].'",
+			"content":"'.$articleDetailInfo[0]["a_Content"].'",
 			"pre":{
-				"id":"'.$articlePreInfo[0]["id"].'",
-				"title":"'.$articlePreInfo[0]["title"].'"
+				"id":"'.$articlePreInfo[0]["a_Id"].'",
+				"title":"'.$articlePreInfo[0]["a_Title"].'"
 			},
 			"next":{
-				"id":"'.$articleNextInfo[0]["id"].'",
-				"title":"'.$articleNextInfo[0]["title"].'"
+				"id":"'.$articleNextInfo[0]["a_Id"].'",
+				"title":"'.$articleNextInfo[0]["a_Title"].'"
 			}
 		}';
 
-		echo '{"success":true, "msg":' . $msg . '}';
+		echo '{"feedback":' . $feedback . '}';
 	}
 
 ?>
