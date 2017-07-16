@@ -9,21 +9,12 @@ function showArticleDetail() {
 	
 	var articleDetailDiv = document.getElementsByClassName("article-detail");
 
-	var subString = "?id=";
-
-	var id = parseInt(window.location.search.substr(subString.length));
-
-	// id 小于0，就回去吧
-	if (id <= 0) {
-		console.log("no more");
-		window.history.back(-1);
-		return;
-	}
+	var id = 0;
 
 	var innerHTML = '';
 
 	var request = new XMLHttpRequest();
-	request.open("GET", "assist/getArticle.php?articleid=" + id);
+	request.open("GET", "assist/getAbout.php?about=" + id);
 	request.send();
 	request.onreadystatechange = function () {
 		if (request.readyState === 4) {
@@ -42,22 +33,11 @@ function showArticleDetail() {
 				data["title"] + '</h2><p class="text-center"> \
 				<i class="fa fa-calendar"></i><time class="date">' + 
 				data["date"] + '</time><i class="fa fa-eye"></i><span>' + 
-				data["view"] + '</span></p><div class="parting-line"></div><div class="content">' + 
-				data["content"] + '</div><div class="parting-line"></div><div class="pre-next"><div class="pre">';
+				data["view"] + '</span></p><div class="content">' + 
+				data["content"] + '</div>';
 
-				if (data["pre"]["id"]) {
-					innerHTML += '<a href="article.php?id=' + 
-					data["pre"]["id"] + '"><span>上一篇：' + data["pre"]["title"] + '</span></a>';
-				}
-
-				innerHTML += '</div><div class="next text-right">';
-
-				if (data["next"]["id"]) {
-					innerHTML += '<a href="article.php?id=' + 
-					data["next"]["id"] + '"><span>下一篇：' + data["next"]["title"] + '</span></a>';
-				}
-
-				innerHTML += '</div></div></div></div>';
+				
+				innerHTML += '</div></div>';
 
 				articleDetailDiv[0].innerHTML = innerHTML;
 

@@ -10,10 +10,10 @@
 		private $pdo;     /* interface to db */
 		
 		const DBMS = 'mysql';
-		const USERNANE = "";   /* fill with username */
-		const PASSWORD = '';   /* fill with password */
-		const HOST = 'localhost';
-		const DB = '';          /* fill with dbname */
+		const USERNANE = 'username';
+		const PASSWORD = 'password';
+		const HOST = 'hostname';
+		const DB = 'dbname';
 
 
 		/**
@@ -50,6 +50,16 @@
 				}
 			}
 			return $rows;
+		}
+
+		/**
+		 * update tables' property values
+		 * @param  string $sql 
+		 * @return int      affected columns
+		 */
+		public function update($sql)
+		{
+			return $this->pdo->exec($sql);
 		}
 
 

@@ -19,33 +19,12 @@
 		$showedBlockNum = intval($_GET["wantedblock"]);
 
 		if ($showedBlockNum > $GLOBALS["artilceBlockObject"]->getBlockNum()) {
-			echo '{"feedback":""}';
+			echo json_encode("");
 			return;
 		}
 
 		$artilceBlockInfoArray =  $GLOBALS["artilceBlockObject"]->getBlockInfo($showedBlockNum);    /* 传入想要的第几块的编码 */
 
-		$feedback = "[";
-
-		foreach ($artilceBlockInfoArray as $key => $value) {
-
-			if ($artilceBlockInfoArray['0'] != $value) {
-				$feedback .= ',';
-			}
-
-			$feedback .= '{
-				"id":"'.$value["a_Id"].'",
-				"title":"'.$value["a_Title"].'",
-				"date":"'.$value["a_Date"].'",
-				"introduction":"'.$value["a_Introduction"].'"
-			}';
-		}
-
-		$feedback .= "]";
-
-		echo '{"feedback":' . $feedback . '}';
-		
+		echo json_encode($artilceBlockInfoArray);
 	}
-
-
 ?>

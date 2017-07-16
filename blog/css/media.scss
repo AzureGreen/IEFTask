@@ -1,0 +1,28 @@
+$mediumSize: 1170px;
+$smallSize: 800px;
+
+@mixin fontSize($ratioBig, $ratioMedium, $ratioSmall) {
+	font-size: $ratioBig;
+
+	@media (max-width: $mediumSize) {
+		font-size: $ratioMedium;
+	}
+
+	@media (max-width: $smallSize) {
+		font-size: $ratioSmall;
+	}
+}
+
+@mixin mediaSize($style, $ratioBig, $ratioMedium, $ratioSmall) {
+
+	#{$style}: $ratioBig;
+
+	@media (max-width: $mediumSize) {
+		#{$style}: $ratioMedium;
+	}
+
+	@media (max-width: $smallSize) {
+		#{$style}: $ratioSmall;
+	}
+
+}

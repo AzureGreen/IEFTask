@@ -1,5 +1,6 @@
 
 var currentWantedBlock = 1;   // int
+var bNoMore = false;
 
 /**
  * initialize showArticleBlock
@@ -35,25 +36,23 @@ function showArticleBlock() {
 			if (request.status === 200) {
 				var data = JSON.parse(request.responseText);
 
-				if (!data.feedback) {
-					console.log("没有更多文章啦！");
-					return false;
+				if (!data) {
+					bNoMore = true;
+					return;
 				}
 
 				/* insert innerhtml */
-				data.feedback.forEach(function (value, index, array) {
-					innerHTML += '<div class="article"><div class="block"><h3 class="title block-title"><a href="article.php?id=' + 
+				data.forEach(function (value, index, array) {
+					innerHTML += '<div class="article"><div class="block"><h2 class="title block-title"><a href="article.php?id=' + 
 					array[index]["id"] + '"><span>' + 
-					array[index]["title"] + '</span></a></h3><p class="date text-right">' + 
-					array[index]["date"] + '</p><p class="introduction">' + 
+					array[index]["title"] + '</span></a></h2><time class="date block-date text-right">' + 
+					array[index]["date"] + '</time><p class="introduction">' + 
 					array[index]["introduction"] + ' </p></div></div>';
 				});
 
 				articleBlockDiv[0].innerHTML += innerHTML;
-				return true;
 			} else {
 				console.log("ajax: 请求文章块 失败" + request.status);
-				return false;
 			}
 		}
 	};
@@ -68,13 +67,13 @@ function showArticleBlock() {
 function showMoreArticle() {
 	
 	// 向服务器请求数据，新添加文章块
-	
-	currentWantedBlock++;
+	if (!bNoMore) {
+		currentWantedBlock++;
 
-	var ret = showArticleBlock();
+		showArticleBlock();
 
-	console.log(typeof(ret));
-
-	console.log("showMoreArticle: " + currentWantedBlock);
-
+		console.log("showMoreArticle: " + currentWantedBlock);
+	} else {
+		console.log("No more articles");
+	}
 }

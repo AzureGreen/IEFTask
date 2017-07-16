@@ -1,0 +1,17 @@
+
+/* variables */
+$themeColor: #377092;
+$hoverColor: #2f7dad;
+
+footer {
+	//margin-top: 40px;
+	background-color: $themeColor;
+
+	p {
+		padding: 16px 0;
+		color: #fff;
+		a {
+			color: #fff;
+		}
+	}
+}

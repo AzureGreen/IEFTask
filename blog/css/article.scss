@@ -1,0 +1,172 @@
+/* variables */
+$themeColor: #377092;
+$linkHoverColor: #3a9fdc;
+$btHoverColor: #5692b5;
+
+.article {
+	margin: 0 auto;
+	color: #555;
+
+	@include mediaSize(padding, 4rem 0, 3.5rem 0, 3rem 0);
+	
+	.block {
+
+		@include mediaSize(width, 60%, 75%, 80%);
+		@include mediaSize(padding, 3.6rem, 2rem, 1.5rem);
+
+		margin: 0 auto;
+		box-shadow: #d3d3c1 0 0 1rem;
+		transition: box-shadow 0.3s ease-in-out 0s;
+
+		.title {
+			font-family: Lato,PingFang SC,Microsoft YaHei,sans-serif;
+			font-weight: 500;
+    		line-height: 1.1;
+		}
+
+		.date {
+			//font-size: 1.6rem;
+		}
+		
+		.introduction {
+			line-height: 1.3;
+			padding: 28px 0 10px 0;
+		}
+
+		.img-title, .post-img {
+			width: 90%;
+			margin: 0 auto;
+			@include mediaSize(margin-bottom, 1rem, 0.8rem, 0.5rem);
+			display: block;
+			border-radius: 5px;
+		}
+
+		.content {
+			width: 90%;
+			margin: 0 auto;
+			line-height: 2;
+    		letter-spacing: 1px;
+
+			ol ,ul, .code-link {
+				padding: 0.8rem;
+				background-color: #edecec;
+				border-radius: 0.5rem;
+			}
+
+			a {
+				color: $themeColor;
+				transition: color 0.3s ease-in-out 0s;
+				&:hover {
+					color: $linkHoverColor;
+				}
+			}
+
+			.code-link {
+				a {
+					display:block;
+				}
+			}
+
+			.img-block {
+				width: 100%;
+				overflow-x: auto;
+				/* for chrome */
+				::-webkit-scrollbar {
+					display: none;
+				}
+			}
+		}
+
+		/* article block style */
+		.block-title {
+			margin-bottom: 6px;
+			padding: 0 0 16px;
+			border-bottom: 3px solid $themeColor;
+			display: inline-block;
+			transition: padding-right 0.3s ease-in-out 0s;
+
+			a {
+				color: rgba(0, 0, 0, 0.8);
+				transition: color 0.3s ease-in-out 0s;
+			}
+
+			&:hover {
+				padding-right: 30px;
+
+				a {
+					font-weight: 450;
+					color: $themeColor;
+				}
+			}
+		}
+
+		/* article detail style */
+		.parting-line {
+			width: 80%;
+			height: 2px;
+			margin: 0 auto;
+			@include mediaSize(margin-top, 2rem, 1.6rem, 1.4rem);
+			@include mediaSize(margin-bottom, 2rem, 1.6rem, 1.4rem);
+			background-color: $themeColor;
+			transition: width 0.3s ease-in-out 0s;
+		}	
+
+		.pre, .next {
+			width: 47%;
+			display: inline-block;
+			overflow: hidden;
+
+			a {
+				color: #444;
+			}
+		}
+
+		.pre, .next, h3 {
+			transition: color 0.3s ease-in-out 0s;
+			a {
+				transition: color 0.3s ease-in-out 0s;
+			}
+			span {
+				display: inline-block;
+				border-bottom: 1px solid #ccc;
+				transition: border-bottom 0.3s ease-in-out 0s;
+			}
+
+			&:hover {
+				color: $themeColor;
+				
+				a {
+					color: $linkHoverColor;
+				}
+
+				span {
+					display: inline-block;
+					border-bottom: 1px solid $linkHoverColor;
+				}
+			}
+		}
+
+		&:hover {
+			box-shadow: #b2b2a5 0 0 20px;
+			.parting-line {
+				width: 90%;
+			}
+		}
+	}
+}
+
+.showmore {
+	width: 100px;
+	margin: 0 auto;
+	margin-bottom: 2rem;
+	padding: 12px 60px;
+	background-color: $themeColor;
+	border-radius: 5px;
+	cursor: pointer;
+
+	transition: background-color 0.5s ease-in-out 0s;
+
+	&:hover {
+		background-color: $btHoverColor;
+	}
+}
