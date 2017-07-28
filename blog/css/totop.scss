@@ -1,0 +1,16 @@
+
+.to-top {
+    position: fixed;
+    background-color: #ddd;
+    border-radius: 3px;
+    @include mediaSize(width, 3rem, 2rem, 2rem);
+    @include mediaSize(height, 3.5rem, 2.5rem, 2.5rem);
+    @include mediaSize(bottom, 3.5rem, 1rem, 1rem);
+    @include mediaSize(right, 3.5rem, 1rem, 1rem);
+
+    .fa-arrow-up {
+        color: #aaa;
+        @include mediaSize(font-size, 3rem, 2rem, 2rem);
+        @include mediaSize(line-height, 3rem, 2rem, 2rem);
+    }
+}

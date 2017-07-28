@@ -62,7 +62,7 @@
 
 			$this->wantedBlock = $wantedBlock;
 
-			$sql = "SELECT a_Id AS id, a_Title AS title, a_Date AS date, a_Introduction AS introduction FROM article WHERE a_Hide != 1 ORDER BY a_Date DESC LIMIT ".($this->blockSize * ($this->wantedBlock - 1)).",".$this->blockSize;
+			$sql = "SELECT a_Id AS id, a_Title AS title, a_Date AS date, a_View AS view, a_Introduction AS introduction FROM article WHERE a_Hide != 1 ORDER BY a_Date DESC LIMIT ".($this->blockSize * ($this->wantedBlock - 1)).",".$this->blockSize;
 
 			return $this->query($sql);
 		}

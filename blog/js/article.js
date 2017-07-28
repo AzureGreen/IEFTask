@@ -50,7 +50,7 @@ function showArticleDetail() {
 					data["pre"]["id"] + '"><span>上一篇：' + data["pre"]["title"] + '</span></a>';
 				}
 
-				innerHTML += '</div><div class="next text-right">';
+				innerHTML += '</div><div class="next">';
 
 				if (data["next"]["id"]) {
 					innerHTML += '<a href="article.php?id=' + 

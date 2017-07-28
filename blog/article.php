@@ -26,6 +26,10 @@
 	include_once './components/footer.php';
 ?>
 
+<?php
+	include_once './components/totop.php';
+?>
+
 <script src="./js/article.js" type="text/javascript" charset="utf-8" async="async"></script>
 <script src="./js/press.effect.js" type="text/javascript" charset="utf-8" async="async"></script>
 </body>

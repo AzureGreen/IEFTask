@@ -4,12 +4,10 @@ $themeColor: #377092;
 $hoverColor: #2f7dad;
 
 footer {
-	//margin-top: 40px;
 	background-color: $themeColor;
-
+	padding: 0.7rem 0;
 	p {
-		padding: 16px 0;
-		color: #fff;
+		padding: 0.25rem 0;
 		a {
 			color: #fff;
 		}

@@ -9,11 +9,11 @@
 	{
 		private $pdo;     /* interface to db */
 		
-		const DBMS = 'mysql';
-		const USERNANE = 'username';
-		const PASSWORD = 'password';
-		const HOST = 'hostname';
-		const DB = 'dbname';
+		const DBMS = 'mysql';    /* db type */
+		const USERNANE = "";	/* db usr */
+		const PASSWORD = '';	/* db pwd */
+		const HOST = '';		/* ip */
+		const DB = '';			/* db name */
 
 
 		/**

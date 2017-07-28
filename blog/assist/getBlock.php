@@ -18,7 +18,7 @@
 	{	
 		$showedBlockNum = intval($_GET["wantedblock"]);
 
-		if ($showedBlockNum > $GLOBALS["artilceBlockObject"]->getBlockNum()) {
+		if ($showedBlockNum > $GLOBALS["artilceBlockObject"]->getBlockNum()) {  /* 没有查询到 */
 			echo json_encode("");
 			return;
 		}

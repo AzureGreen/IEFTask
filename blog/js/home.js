@@ -45,8 +45,11 @@ function showArticleBlock() {
 				data.forEach(function (value, index, array) {
 					innerHTML += '<div class="article"><div class="block"><h2 class="title block-title"><a href="article.php?id=' + 
 					array[index]["id"] + '"><span>' + 
-					array[index]["title"] + '</span></a></h2><time class="date block-date text-right">' + 
-					array[index]["date"] + '</time><p class="introduction">' + 
+					array[index]["title"] + '</span></a></h2><p class="text-right"> \
+					<i class="fa fa-calendar"></i><time class="date">' + 
+					array[index]["date"] + '</time><i class="fa fa-eye"></i><span>' + 
+					array[index]["view"] + '</span></p>\
+					<p class="introduction">' + 
 					array[index]["introduction"] + ' </p></div></div>';
 				});
 

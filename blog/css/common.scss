@@ -8,7 +8,13 @@ $btHoverColor: #5692b5;
  	padding: 0;
  	margin: 0;
 }
-
+/*
+html {
+    -ms-overflow-style:none;
+    overflow:-moz-scrollbars-none;
+}
+html::-webkit-scrollbar{width:0px}
+*/
 html {
 	font-size: 10px;
 }
@@ -67,10 +73,11 @@ a {
 	text-align: right;
 }
 
-.fa {
-	margin: 0 0.6rem;
-	font-size: 1rem;
-}
+
+// .fa {
+// 	margin: 0 0.6rem;
+// 	font-size: 1rem;
+// }
 
 .icon-link {
     background-color: rgba(0,0,0,.1);
@@ -78,6 +85,7 @@ a {
     transition: all 0.2s ease-in-out 0s;
     width: 42px;
     height: 42px;
+    font-size: 20px;
     line-height: 42px;
     border-radius: 42px;
 
