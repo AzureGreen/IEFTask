@@ -7,6 +7,8 @@
 	*/
 	class ArticleDetail extends Database
 	{
+		private $aboutId = 0;
+
 		function __construct()
 		{
 			if (!$this->getConnect()) {
@@ -15,9 +17,14 @@
 			}
 		}
 
+		/**
+		 * update view num of articles
+		 * @param  int $id 
+		 * @return void     
+		 */
 		public function updateViewNum($id)
 		{
-			$sql = "UPDATE article SET a_View = a_View + 1 WHERE a_id = ".$id." AND a_Hide !=1";
+			$sql = "UPDATE article SET a_View = a_View + 1 WHERE a_id = ".$id;
 
 			$this->update($sql);
 		}
@@ -30,6 +37,17 @@
 		public function getDetailInfo($id)
 		{
 			$sql = "SELECT a_Title AS title, a_Date AS date, a_Content AS content, a_View AS view FROM article WHERE a_id = ".$id." AND a_Hide !=1";
+
+			return $this->query($sql);
+		}
+
+		/**
+		 * get detail info of article, especially the content
+		 * @return array     array of article detail info
+		 */
+		public function getAboutDetailInfo()
+		{
+			$sql = "SELECT a_Title AS title, a_Date AS date, a_Content AS content, a_View AS view FROM article WHERE a_id = ".$this->aboutId;
 
 			return $this->query($sql);
 		}

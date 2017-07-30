@@ -19,14 +19,18 @@
 		/* first of all, update view */
 		$GLOBALS["articleDetailObject"]->updateViewNum($articleId);  /* update view*/
 		
-		$articleDetailInfo = $GLOBALS["articleDetailObject"]->getDetailInfo($articleId);  /* get content of article*/
+		if ($articleId > 0) {
+			$articleDetailInfo = $GLOBALS["articleDetailObject"]->getDetailInfo($articleId);  /* get content of article*/
 
-		$articlePreInfo = $GLOBALS["articleDetailObject"]->getPreInfo($articleId);  /* get previous title of current article*/
+			$articlePreInfo = $GLOBALS["articleDetailObject"]->getPreInfo($articleId);  /* get previous title of current article*/
 
-		$articleNextInfo = $GLOBALS["articleDetailObject"]->getNextInfo($articleId);  /* get next title of current article*/
+			$articleNextInfo = $GLOBALS["articleDetailObject"]->getNextInfo($articleId);  /* get next title of current article*/
+		} else {
+			$articleDetailInfo = $GLOBALS["articleDetailObject"]->getAboutDetailInfo($articleId);  /* get content of about page*/
+			$articlePreInfo = $articleNextInfo = null;
+		}
 
 		if (!$articleDetailInfo) {
-			//echo '{"feedback":""}';
 			echo json_encode("");
 			return;
 		}
