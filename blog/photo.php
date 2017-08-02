@@ -16,9 +16,17 @@
 	include_once './components/header.php';
 ?>
 
-<section class="container essay">
+<section class="container photo">
 	
-	<div class="article-block"></div>
+	<div class="time-line">
+		<div class="tl-spine"></div>
+	</div>
+	<div class="pop-up">
+		<div class="big-img">
+			<img src="" alt="hello world">
+			<h2>hello world</h2>
+		</div>
+	</div>
 	
 <?php
 	include_once './components/showmore.php';
@@ -36,7 +44,7 @@
 
 <script src="./static/js/require.min.js" type="text/javascript" charset="utf-8" async defer></script>
 <script src="./static/js/require.config.js" type="text/javascript" charset="utf-8" async defer></script>
-<!-- <script src="./static/js/home.js" type="text/javascript" charset="utf-8" async defer></script> -->
-<script src="./static/js/build/home.js" type="text/javascript" charset="utf-8" async defer></script>
+<!-- <script src="./static/js/photo.js" type="text/javascript" charset="utf-8" async defer></script> -->
+<script src="./static/js/build/photo.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>

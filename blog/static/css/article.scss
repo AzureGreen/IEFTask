@@ -16,7 +16,7 @@ $btHoverColor: #5692b5;
 
 		margin: 0 auto;
 		box-shadow: #d3d3c1 0 0 1rem;
-		transition: box-shadow 0.3s ease-in-out 0s;
+		transition: all 0.3s ease-in-out 0s;
 
 		.title {
 			font-family: Lato,PingFang SC,Microsoft YaHei,sans-serif;
@@ -43,6 +43,16 @@ $btHoverColor: #5692b5;
 			line-height: 2;
     		letter-spacing: 1px;
 
+			.parting-line {
+				width: 80%;
+				height: 2px;
+				margin: 0 auto;
+				@include mediaSize(margin-top, 2rem, 1.6rem, 1.4rem);
+				@include mediaSize(margin-bottom, 2rem, 1.6rem, 1.4rem);
+				background-color: $themeColor;
+				transition: all 0.3s ease-in-out 0s;
+			}	
+			
 			ol ,ul, .code-link {
 				padding: 0.8rem;
 				background-color: #edecec;
@@ -51,7 +61,7 @@ $btHoverColor: #5692b5;
 
 			a {
 				color: $themeColor;
-				transition: color 0.3s ease-in-out 0s;
+				transition: all 0.3s ease-in-out 0s;
 				&:hover {
 					color: $linkHoverColor;
 				}
@@ -124,11 +134,11 @@ $btHoverColor: #5692b5;
 			padding: 0 0 16px;
 			border-bottom: 3px solid $themeColor;
 			@include mediaSize(display, inline-block, inline-block, block);
-			transition: padding-right 0.3s ease-in-out 0s;
+			transition: all 0.3s ease-in-out 0s;
 
 			a {
 				color: rgba(0, 0, 0, 0.8);
-				transition: color 0.3s ease-in-out 0s;
+				transition: all 0.3s ease-in-out 0s;
 			}
 
 			&:hover {
@@ -142,23 +152,14 @@ $btHoverColor: #5692b5;
 		}
 
 		/* article detail style */
-		.parting-line {
-			width: 80%;
-			height: 2px;
-			margin: 0 auto;
-			@include mediaSize(margin-top, 2rem, 1.6rem, 1.4rem);
-			@include mediaSize(margin-bottom, 2rem, 1.6rem, 1.4rem);
-			background-color: $themeColor;
-			transition: width 0.3s ease-in-out 0s;
-		}	
-
+		
 		.pre, .next, h3 {
-			transition: color 0.3s ease-in-out 0s;
+			transition: all 0.3s ease-in-out 0s;
 
 			span {
 				display: inline-block;
 				border-bottom: 1px solid #ccc;
-				transition: border-bottom 0.3s ease-in-out 0s;
+				transition: all 0.3s ease-in-out 0s;
 			}
 
 			&:hover {
@@ -177,7 +178,7 @@ $btHoverColor: #5692b5;
 			padding-bottom: 0.8rem;
 			a {
 				color: #444;
-				transition: color 0.3s ease-in-out 0s;
+				transition: all 0.3s ease-in-out 0s;
 			}
 
 			&:hover {
@@ -208,8 +209,8 @@ $btHoverColor: #5692b5;
 	background-color: $themeColor;
 	border-radius: 5px;
 	cursor: pointer;
-
-	transition: background-color 0.5s ease-in-out 0s;
+	color: #fff;
+	transition: all 0.5s ease-in-out 0s;
 
 	&:hover {
 		background-color: $btHoverColor;

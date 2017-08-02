@@ -15,7 +15,7 @@ $hoverColor: #2f7dad;
 		border-radius: 5px;
 		cursor: pointer;
 		background-color: $themeColor;
-		transition: background-color 0.8s;
+		transition: all 0.8s ease-in-out 0s;
 
 		&:hover {
 			background-color: $hoverColor;

@@ -1,5 +1,5 @@
 
-require(['jquery', 'articleBlock', 'pressEffect'], function ($, articleBlock, pressEffect) {
+require(['jquery', 'articleGroup', 'toTop', 'pressEffect'], function ($, articleGroup, toTop, pressEffect) {
 
 	/**
 	 * initialize sth
@@ -7,10 +7,20 @@ require(['jquery', 'articleBlock', 'pressEffect'], function ($, articleBlock, pr
 	 */
 	$(document).ready(function () {
 
-		articleBlock.showArticleBlock();
+		articleGroup.showArticleGroup();
 
 		pressEffect.init();
 
-		$('.showmore').on('touchend click', articleBlock.showMoreArticle);
+		$('.to-top').on('click', toTop.move);
+		$(window).on('scroll', function() {
+			toTop.hide(100);
+		});
+		toTop.hide(100);		
+
+		/* add text to showmore btn */
+		var showMore = $('.showmore');
+		var showMoreSpan = showMore.children('span');
+		showMore.on('click', articleGroup.showMoreArticle);
+		showMoreSpan.html(showMoreSpan.data('article'));
 	});
 });

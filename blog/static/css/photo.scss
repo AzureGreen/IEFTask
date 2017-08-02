@@ -1,0 +1,257 @@
+
+.photo {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    //padding: 0 20px 50px 20px;
+    padding: 0 0.8rem 4.5rem;
+    box-sizing: border-box;
+
+    .time-line {
+        width: 100%;
+        height: auto;
+        position: relative;
+        overflow: hidden;
+        line-height: 1.3;
+        color: #555;
+
+        .tl-spine {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            border: dotted 0.1rem #acb7c0;
+
+            @include respondTo(small) {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 6px;
+            }
+        }
+
+        .tl-box {
+            box-sizing: border-box;
+            margin: 4rem 0 2rem;
+            position: relative;
+            z-index: 10;
+
+            &:last-of-type {
+                margin-bottom: 4rem;
+            }
+            
+            @include mediaSize(width, 50%, 50%, 100%);
+
+            .tl-content {              
+                background-color: #fff;
+                overflow: hidden;
+                padding: 2rem;
+                box-sizing: border-box;
+                box-shadow: 0 3px 0 #d7e4ed;
+                border: solid 1px #d7e4ed;
+                border-radius: 3px;
+
+                @include mediaSize(padding, 2rem, 2rem, 1rem);
+
+                .tl-image-block {
+                    position: relative;
+                    width: 100%;
+                    margin: 0 auto;
+
+                    .tl-image {
+                        width: 100%;
+                        margin: 1rem auto;
+                        display: block;
+                        border-radius: 5px;
+                    }
+                }
+
+                .tl-title {
+                    padding: 0;
+                    margin: 0 0 1rem 0;
+                    color: #069;
+                }
+
+                .tl-introduction {
+                    display: block;
+                }
+
+                .tl-extra-info {
+                    width: 100%;
+                    height: auto;
+                    box-sizing: border-box;
+                    border-top: solid 1px #DDD;
+                    margin: 1rem 0 0 0;
+                    padding: 1rem 0 0 0;
+                }
+            }
+
+            .tl-icon {
+                position: absolute;
+                width: 20px;
+                height: 0px;
+                border-top: solid 1px #acb7c0;
+                z-index: 100;
+                background: #000;
+
+                .fa-camera {
+                    display: inline-block;
+                    color: #acb7c0;
+                    position: absolute;
+                }
+            }
+        }
+
+        .tl-left {
+            float: left;
+            clear: left;
+            .tl-content {
+                margin-right: 30px;
+                
+                @include respondTo(small) {
+                    margin-left: 30px;
+                    margin-right: 0;
+                }
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    right: 20px;
+                    top: 9px;
+                    border-style: solid;
+                    border-width: 11px 0 11px 11px;
+                    border-color: transparent transparent transparent #d7e4ed;
+                }
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    right: 21px;
+                    top: 10px;
+                    border-style: solid;
+                    border-width: 10px 0 10px 10px;
+                    border-color: transparent transparent transparent #fff;
+                }
+            }
+            .tl-icon {
+                right: 0;
+                top: 20px;
+
+                .fa-camera {
+                    right: -8px;
+                    bottom: -6px;
+                }
+            }
+        }
+
+        .tl-right {
+            float: right;
+            clear: right;
+
+            @include mediaSize(float, right, right, left);
+
+            .tl-content {
+                margin-left: 30px;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: 20px;
+                    top: 29px;
+                    border-style: solid;
+                    border-width: 11px 11px 11px 0;
+                    border-color: transparent #d7e4ed transparent transparent;
+                }
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 21px;
+                    top: 30px;
+                    border-style: solid;
+                    border-width: 10px 10px 10px 0;
+                    border-color: transparent #fff transparent transparent;
+                }
+            }
+            .tl-icon {
+                left: 0;
+                top: 40px;
+
+                .fa-camera {
+                    left: -8px;
+                    top: -6px;
+                }
+            }
+        }
+
+        .tl-left, .tl-right {
+            .tl-content {
+                &:before {
+                    @include respondTo(small) {
+                        left: 20px;
+                        right: inherit;
+                        top: 19px;
+                        border-width: 11px 11px 11px 0;
+                        border-color: transparent #d7e4ed transparent transparent;
+                    }
+                }
+                &:after {
+                    @include respondTo(small) {
+                        position: absolute;
+                        left: 21px;
+                        right: inherit;
+                        top: 20px;
+                        border-width: 10px 10px 10px 0;
+                        border-color: transparent #FFF transparent transparent;                    
+                    }
+                }
+            }
+            .tl-icon {
+                @include respondTo(small) {
+                    left: 0;
+                    top: 30px;
+                }
+
+                .fa-camera {
+                    @include respondTo(small) {
+                        left: 0;
+                        top: -10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .pop-up {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10000;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.6);
+        //transition: all 0.3s ease-in-out 0s;
+
+        .big-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            color: #fff;
+            text-align: center;
+        }
+
+        img {
+            transform-origin: center center;
+            @include mediaSize(width, 30%, 50%, 86%);
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+    }
+}

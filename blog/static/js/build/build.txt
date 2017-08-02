@@ -2,7 +2,8 @@
 home.js
 ----------------
 lib/jquery-3.2.1.min.js
-app/article.block.js
+app/article.group.js
+app/to.top.js
 app/press.effect.js
 home.js
 
@@ -10,12 +11,22 @@ article.js
 ----------------
 lib/jquery-3.2.1.min.js
 app/article.detail.js
+app/to.top.js
 app/press.effect.js
 article.js
+
+photo.js
+----------------
+lib/jquery-3.2.1.min.js
+app/photo.info.js
+app/to.top.js
+app/press.effect.js
+photo.js
 
 about.js
 ----------------
 lib/jquery-3.2.1.min.js
 app/article.detail.js
+app/to.top.js
 app/press.effect.js
 about.js

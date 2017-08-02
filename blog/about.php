@@ -31,6 +31,8 @@
 ?>
 
 <script src="./static/js/require.min.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="./static/js/require.config.js" type="text/javascript" charset="utf-8" async defer></script>
+<!-- <script src="./static/js/about.js" type="text/javascript" charset="utf-8" async defer></script> -->
 <script src="./static/js/build/about.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>

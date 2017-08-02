@@ -5,13 +5,16 @@
 	mainConfigFile: './js/require.config.js', // requirejs的配置文件
 	modules: [{
 		name: 'home',
-		excludeShallow: ['articleDetail']
+		excludeShallow: ['articleDetail', 'photoInfo']
 	}, {
 		name: 'article',
-		excludeShallow: ['articleBlock']
+		excludeShallow: ['articleBlock', 'photoInfo']
 	}, {
+		name: 'photo',
+		excludeShallow: ['articleBlock', 'articleDetail']
+	},{
 		name: 'about',
-		excludeShallow: ['articleBlock']
+		excludeShallow: ['articleBlock', 'photoInfo']
 	}]
 })
 

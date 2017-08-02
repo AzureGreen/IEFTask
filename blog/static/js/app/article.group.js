@@ -1,17 +1,17 @@
 define(['jquery'], function ($) {
 
-	var currentWantedBlock = 1,    /* int */
+	var currentWantedGroup = 1,    /* int */
 		
 		bNoMore = false,           /* bool */
 		
 		/**
-		 * request for article block from server
+		 * request for article group from server
 		 * @return {void} 
 		 */
-		showArticleBlock = function () {
+		showArticleGroup = function () {
 
 			$.ajax({
-				url: 'assist/getBlock.php?wantedblock=' + currentWantedBlock,
+				url: 'assist/getGroup.php?wantedgroup=' + currentWantedGroup,
 				type: 'GET',
 				dataType: 'json',
 				
@@ -50,11 +50,11 @@ define(['jquery'], function ($) {
 		showMoreArticle = function () {
 			/* 向服务器请求数据，新添加文章块 */
 			if (!bNoMore) {
-				currentWantedBlock++;
+				currentWantedGroup++;
 
-				showArticleBlock();
+				showArticleGroup();
 
-				console.log("showMoreArticle: " + currentWantedBlock);
+				console.log("showMoreArticle: " + currentWantedGroup);
 			} else {
 				console.log("No more articles");
 			}
@@ -62,7 +62,7 @@ define(['jquery'], function ($) {
 
 	return {
 
-		showArticleBlock: showArticleBlock,
+		showArticleGroup: showArticleGroup,
 
 		showMoreArticle: showMoreArticle
 	};

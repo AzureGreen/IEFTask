@@ -13,6 +13,12 @@
 					</button>
 				</a>
 			</li><li>
+				<a href="./photo.php">
+					<button class="right-nav-button press-effect" data-color="rgba(45, 105, 149, 0.52)">
+						<span>剪影</span>
+					</button>
+				</a>
+			</li><li>
 				<a href="./about.php">
 					<button class="right-nav-button press-effect" data-color="rgba(45, 105, 149, 0.52)">
 						<span>关于</span>

@@ -1,1 +1,1 @@
-requirejs.config({baseUrl:"./js",paths:{jquery:"lib/jquery-3.2.1.min",articleBlock:"app/article.block",articleDetail:"app/article.detail",pressEffect:"app/press.effect"}});
+requirejs.config({baseUrl:"./static/js",paths:{jquery:"lib/jquery-3.2.1.min",articleGroup:"app/article.group",articleDetail:"app/article.detail",photoInfo:"app/photo.info",toTop:"app/to.top",pressEffect:"app/press.effect"}});

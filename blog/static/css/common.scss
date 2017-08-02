@@ -8,19 +8,13 @@ $btHoverColor: #5692b5;
  	padding: 0;
  	margin: 0;
 }
-/*
-html {
-    -ms-overflow-style:none;
-    overflow:-moz-scrollbars-none;
-}
-html::-webkit-scrollbar{width:0px}
-*/
+
 html {
 	font-size: 10px;
+	//font-size: 62.5%;
 }
 
 body {
-	color: #fff;
     font-size: 1.6rem;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, PingFang SC, Source Han Sans CN, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
 }
