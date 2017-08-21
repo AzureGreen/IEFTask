@@ -1,0 +1,274 @@
+@import "./reset.scss"; 
+
+$tinySize: 340px;
+$smallSize: 600px;
+$mediumSize: 1024px;
+$containerWidth: 40rem;
+$containerHeight: 32rem;
+$headHeight: 3.2rem;
+$inputHeight: 4rem;
+$dlgHeight: 100% - (($headHeight + $inputHeight) / $containerHeight) * 100%;
+
+
+html {
+    font-size: 20px;
+}
+
+body {
+    background-color: #ccc;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    font-family: consolas,Menlo,PingFang SC,Microsoft YaHei,monospace;
+}
+
+.chat-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $containerWidth;
+    height: $containerHeight;
+    background: #ebebeb;
+    border-radius: 0.5rem;
+
+    .chat-head {
+        position: relative;
+        background: #393a3f;
+        height: $headHeight;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        z-index: 100;
+
+        span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+        }
+    }
+
+    .chat-dlg {
+        position: relative;
+        height: $dlgHeight;
+        overflow-Y: auto;
+        
+        .chat-system-row {
+            position: relative;
+            min-height: 2.1rem;
+            color: #fff;
+            font-size: 0.9rem;
+            span {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                display: inline-block;
+                margin-top: 0.6rem;
+                padding: 0.3rem;
+                background-color: #d4d4d4;
+                border-radius: 0.25rem;
+
+                &:last-of-type {
+                    margin-bottom: 0.6rem;
+                }
+            }
+        }
+        
+        .chat-msg-row {
+            width: 100%;
+            min-height: 3rem;
+            overflow: hidden;
+
+            &:last-of-type {
+                .chat-msg {
+                    margin-bottom: 0.6rem;
+                }
+            }
+
+            .chat-msg {
+                position: relative;
+                max-width: 15rem;
+                min-width: 2rem;
+                min-height: 2rem;
+                padding: 0.45rem;
+                margin-top: 0.6rem;
+                border-radius: 0.25rem;
+                line-height: 2rem;
+                text-align: left;  
+            }
+
+            .chat-msg-right {
+                float: right;
+                clear: both;
+                background-color: #a0e75a;
+                margin-right: 0.75rem;
+
+                .chat-bubble-point {
+                    position: absolute;
+                    top: 1rem;
+                    left: 100%;
+                    content: "";
+                    border-top: 0.5rem solid transparent;
+                    border-left: 0.5rem solid #a0e75a;
+                    border-bottom: 0.5rem solid transparent;
+                }
+            }
+
+            .chat-msg-left {
+                float: left;
+                clear: both;
+                background-color: #fff;
+                margin-left: 0.75rem;
+
+                .chat-bubble-point {
+                    position: absolute;
+                    top: 1rem;
+                    right: 100%;
+                    content: "";
+                    border-top: 0.5rem solid transparent;
+                    border-right: 0.5rem solid #fff;
+                    border-bottom: 0.5rem solid transparent;
+                }
+            }
+        }
+    }
+
+    .chat-input-box {
+        position: absolute;
+        bottom: 0;
+        height: $inputHeight;
+        width: 100%;
+        border-top: 1px solid #ccc;
+        z-index: 100;
+
+        .chat-input-msg {
+            width: 80%;
+            height: 2rem;
+            padding: 0.2rem;
+            margin: 0.8rem 1.2rem 0 1rem;
+            border: 0.05rem solid #ccc;
+            border-radius: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .chat-send-btn {
+            width: 3.8rem;
+            height: 2rem;
+            font-size: 0.8rem;
+            text-align: center;
+            color: #fff;
+            border: 0.05rem solid transparent;
+            border-color: #179e16;
+            border-radius: 0.2rem;
+            background: #1aad19;
+        }
+    }
+}
+
+@media (max-width: $mediumSize) {
+    $containerWidth: 100%;
+    $containerHeight: 100%;
+    $headHeight: 6.25%; 
+    $inputHeight: 7.8125%;
+    $dlgHeight: 100% - $headHeight - $inputHeight;
+
+    .chat-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+        width: $containerWidth;
+        height: $containerHeight;
+        border-radius: 0;
+
+        .chat-head {
+            height: $headHeight;
+            border-radius: 0;
+        }
+
+        .chat-dlg {
+            height: $dlgHeight;
+        }
+
+        .chat-input-box {
+            height: $inputHeight;
+        }
+
+    }
+}
+
+@media (max-width: $smallSize) {
+    $containerWidth: 100%;
+    $containerHeight: 100%;
+    $headHeight: 8%; 
+    $inputHeight: 8.75%;
+    $dlgHeight: 100% - (($headHeight + $inputHeight) / $containerHeight) * 100%;
+
+    .chat-container {
+        width: $containerWidth;
+        height: $containerHeight;
+        border-radius: 0;
+
+        .chat-head {
+            height: $headHeight;
+            border-radius: 0;
+        }
+
+        .chat-dlg {
+            height: $dlgHeight;
+        }
+
+        .chat-input-box {
+            height: $inputHeight;
+
+            .chat-input-msg {
+                width: 70%;
+                height: 1.4rem;
+                margin: 0.5rem 0.8rem 0 0.5rem;
+            }
+
+            .chat-send-btn {
+                width: 2.8rem;
+                height: 1.8rem;
+            }
+        }
+    }
+}
+
+@media (max-width: $tinySize) {
+    $containerWidth: 100%;
+    $containerHeight: 100%;
+    $headHeight: 8%; 
+    $inputHeight: 8.75%;
+    $dlgHeight: 100% - (($headHeight + $inputHeight) / $containerHeight) * 100%;
+
+    .chat-container {
+        width: $containerWidth;
+        height: $containerHeight;
+        border-radius: 0;
+
+        .chat-head {
+            height: $headHeight;
+            border-radius: 0;
+        }
+
+        .chat-dlg {
+            height: $dlgHeight;
+        }
+
+        .chat-input-box {
+            height: $inputHeight;
+
+            .chat-input-msg {
+                width: 68%;
+                height: 1.3rem;
+                margin: 0.3rem 0.5rem 0;
+            }
+
+            .chat-send-btn {
+                width: 2.6rem;
+                height: 1.4rem;
+            }
+        }
+    }
+}

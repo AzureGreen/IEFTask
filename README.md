@@ -1,3 +1,3 @@
-## Welcome, this is my step of web learning
+## Welcome, this repository will store some code about web(front-end & backstage) I learned and wrote!
 
-### Azure Green.
+### Azure Green

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>chat-room</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+	<link rel="stylesheet" type="text/css" href="static/css/index.css">
+
+</head>
+<body>
+	<section class="chat-container">
+		<header class="chat-head">
+			<span>当前在线 <em></em> 人</span>
+		</header>
+		<div class="chat-dlg"></div>
+		<div class="chat-input-box">
+			<input type="text" class="chat-input-msg">
+			<button class="chat-send-btn">send</button>
+		</div>
+	</section>
+	<template class="chat-left-template">
+		<div class="chat-msg-row">
+			<div class="chat-msg chat-msg-left">				
+				<span></span>
+				<div class="chat-bubble-point"></div>
+			</div>
+		</div>
+	</template>
+	<template class="chat-right-template">
+		<div class="chat-msg-row">
+			<div class="chat-msg chat-msg-right">
+				<span></span>
+				<div class="chat-bubble-point"></div>
+			</div>
+		</div>
+	</template>
+	<template class="chat-system-template">
+		<div class="chat-system-row">
+			<span></span>
+		</div>
+	</template>
+	<script src="./static/js/require.min.js" data-main="static/js/index" type="text/javascript" charset="utf-8" async defer></script>
+</body>
+</html>
