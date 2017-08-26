@@ -53,7 +53,7 @@ $btHoverColor: #5692b5;
 				transition: all 0.3s ease-in-out 0s;
 			}	
 			
-			ol ,ul, .code-link {
+			ol ,ul, .code-link, .highlight {
 				padding: 0.8rem;
 				background-color: #edecec;
 				border-radius: 0.5rem;
@@ -111,6 +111,7 @@ $btHoverColor: #5692b5;
 			}
 
 			.img-scroll {
+				padding-top: 1rem;
 				width: 100%;
 				overflow-x: auto;
 				/* for chrome */

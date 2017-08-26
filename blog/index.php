@@ -26,6 +26,23 @@
 
 </section>
 
+<template class="ab-template">
+	<div class="article">
+		<div class="block">
+			<h2 class="title block-title">
+				<a href="">
+					<span></span>
+				</a>
+			</h2>
+			<p class="text-right"> 
+				<i class="fa fa-calendar"></i>
+				<time class="date"></time>
+			</p>
+			<p class="introduction"></p>
+		</div>
+	</div>
+</template>
+
 <?php
 	include_once './components/footer.php';
 ?>

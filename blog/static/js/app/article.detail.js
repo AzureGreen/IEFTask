@@ -41,13 +41,36 @@ define(['jquery'], function ($) {
 					return;
 				}
 
-				var innerHTML = '';
+				let template = $('.ad-template').html();
+				let temp = $(template);
+				temp.find('.title').text(data["title"]);
+				temp.find('.date').text(data["date"]);
+				temp.find('span').text(data["view"]);
+				temp.find('.content').html(data["content"]);
+
+				if (data["pre"]["id"]) {
+					temp.find('.pre').children('a').attr('href', 'article.php?id='+ data["pre"]["id"]);
+					temp.find('.pre').children('a').children('span').text('上一篇：'+ data["pre"]["title"]);
+				} else {
+					temp.find('.pre').css('display', 'none');
+				}
+
+				if (data["next"]["id"]) {
+					temp.find('.next').children('a').attr('href', 'article.php?id='+data["next"]["id"]);
+					temp.find('.next').children('a').children('span').text('下一篇：'+data["next"]["title"]);
+				} else {
+					temp.find('.next').css('display', 'none');
+				}
+
+				$('.article-detail').append(temp);
+
+				/* var innerHTML = ''; */
 				/* show article */
-				innerHTML += '<div class="article"><div class="block"><h2 class="title text-center">' + 
+				/* innerHTML += '<div class="article"><div class="block"><h2 class="title text-center">' + 
 				data["title"] + '</h2><p class="text-center"><i class="fa fa-calendar"></i><time class="date">' + 
 				data["date"] + '</time><i class="fa fa-eye"></i><span>' + 
 				data["view"] + '</span></p><div class="content">' + 
-				data["content"] + '</div><div class="pre-next"><div class="pre">';
+				data["content"] + '</div><div class="pre-next"><div class="pre">'; 
 
 				if (data["pre"]["id"]) {
 					innerHTML += '<a href="article.php?id=' + 
@@ -63,7 +86,7 @@ define(['jquery'], function ($) {
 
 				innerHTML += '</div></div></div></div>';
 				
-				$('.article-detail').append(innerHTML);
+				/* $('.article-detail').append(innerHTML); */
 			})
 			.fail(function(jqXHR, textStatus) {
 				console.log("ajax: 请求文章详细内容 失败" + textStatus);

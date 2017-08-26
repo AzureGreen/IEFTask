@@ -37,11 +37,11 @@
 
 		/* if return null, showed that no pre or next */
 		if (!$articlePreInfo) {
-			$articlePreInfo[] = array("a_Id" => "", "a_Title" => "");
+			$articlePreInfo[] = array("id" => "", "title" => "");
 		}
 
 		if (!$articleNextInfo) {
-			$articleNextInfo[] = array("a_Id" => "", "a_Title" => "");
+			$articleNextInfo[] = array("id" => "", "title" => "");
 		}
 
 		$item = array();

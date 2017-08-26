@@ -34,6 +34,26 @@
 
 </section>
 
+
+<template class="tl-template">
+	<div class="tl-box">
+		<div class="tl-content">
+			<div class="tl-image-block">
+				<img src="" alt="" class="tl-image">
+			</div>
+			<h2 class="tl-title"></h2>
+			<p class="tl-introduction"></p>
+			<div class="tl-extra-info">
+				<time class="tl-date"></time>
+			</div>
+		</div>
+		<div class="tl-icon">
+			<i class="fa fa-camera" aria-hidden="true"></i>
+		</div>
+	</div>
+</template>
+
+
 <?php
 	include_once './components/footer.php';
 ?>

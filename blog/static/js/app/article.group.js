@@ -23,20 +23,31 @@ define(['jquery'], function ($) {
 					return;
 				}
 
-				var innerHTML = '';
+				/* var innerHTML = ''; */
 				/* insert innerhtml */
 				data.forEach(function (value, index, array) {
-					innerHTML += '<div class="article"><div class="block"><h2 class="title block-title"><a href="article.php?id=' + 
+					
+					let template = $('.ab-template').html();
+					let temp = $(template);
+					temp.find('.title').children('a').attr('href', 'article.php?id='+array[index]["id"]);
+					temp.find('.title').children('a').children('span').text(array[index]["title"]);
+					temp.find('.date').text(array[index]["date"]);
+					temp.find('.introduction').text(array[index]["introduction"]);
+
+					$('.article-block').append(temp);
+
+					/*innerHTML += '<div class="article"><div class="block"><h2 class="title block-title"><a href="article.php?id=' + 
 					array[index]["id"] + '"><span>' + 
 					array[index]["title"] + '</span></a></h2><p class="text-right"> \
 					<i class="fa fa-calendar"></i><time class="date">' + 
-					array[index]["date"] + '</time><i class="fa fa-eye"></i><span>' + 
-					array[index]["view"] + '</span></p>\
+					array[index]["date"] + '</time></p>\
 					<p class="introduction">' + 
-					array[index]["introduction"] + ' </p></div></div>';
+					array[index]["introduction"] + ' </p></div></div>';	*/
+
+
 				});
 				
-				$('.article-block').append(innerHTML);
+				/* $('.article-block').append(innerHTML); */
 			})
 			.fail(function(jqXHR, textStatus) {
 				console.log("ajax: 请求文章块 失败" + textStatus);

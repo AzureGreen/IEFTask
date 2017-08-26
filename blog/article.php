@@ -22,6 +22,31 @@
 
 </section>
 
+<template class="ad-template">
+	<div class="article">
+		<div class="block">
+			<h2 class="title text-center"></h2>
+			<p class="text-center">
+				<i class="fa fa-calendar"></i>
+				<time class="date"></time>
+				<i class="fa fa-eye"></i>
+				<span></span>
+			</p>
+		<div class="content"></div>
+	<div class="pre-next">
+		<div class="pre">
+			<a href="">
+				<span></span>
+			</a>
+		</div>
+		<div class="next">
+			<a href="">
+				<span></span>
+			</a>
+		</div>
+	</div>
+</template>
+
 <?php
 	include_once './components/footer.php';
 ?>

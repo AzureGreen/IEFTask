@@ -1,1 +1,126 @@
-define(["jquery"],function(t){var o=1,i=!1,a=function(){t.ajax({url:"assist/getPhoto.php?wantedgroup="+o,type:"GET",dataType:"json"}).done(function(o){if(!o.length)return void(i=!0);var a="";o.forEach(function(t,o,i){o%2==0?directionClass="tl-left":directionClass="tl-right",a+='\t\t\t\t\t<div class="tl-box '+directionClass+'"> \t\t\t\t\t\t<div class="tl-content"> \t\t\t\t\t\t\t<div class="tl-image-block"> \t\t\t\t\t\t\t\t<img src="'+i[o].image+'" alt="'+i[o].title+'" class="tl-image"> \t\t\t\t\t\t\t</div> \t\t\t\t\t\t\t<h2 class="tl-title">'+i[o].title+'</h2> \t\t\t\t\t\t\t<p class="tl-introduction">'+i[o].introduction+'</p> \t\t\t\t\t\t\t<div class="tl-extra-info"> \t\t\t\t\t\t\t\t<time class="tl-date">photographed on '+i[o].date+'</time> \t\t\t\t\t\t\t</div> \t\t\t\t\t\t</div> \t\t\t\t\t\t<div class="tl-icon"> \t\t\t\t\t\t\t<i class="fa fa-camera" aria-hidden="true"></i> \t\t\t\t\t\t</div> \t\t\t\t\t</div> '}),t(".time-line").append(a)}).fail(function(t,o){console.log("ajax: 请求图片 失败"+o)})},e=function(){i?console.log("No more articles"):(o++,a(),console.log("showMorePhoto: "+o))},l=function(o){o?t(".pop-up").fadeIn(200):t(".pop-up").fadeOut(200)},n=function(o,i){var a=t(".pop-up"),e=a.find("img"),l=a.find("h2");e.attr("src",o),e.attr("alt",i),l.html(i)};return{showPhotoBlock:a,showMorePhoto:e,setPopupImg:n,popupImage:l}});
+define(['jquery'], function ($) {
+
+	var currentWantedGroup = 1,    /* int */
+
+		bNoMore = false,           /* bool */
+
+		/**
+		 * request for photo block from server
+		 * @return {void} 
+		 */
+		showPhotoBlock = function () {
+
+			$.ajax({
+				url: 'assist/getPhoto.php?wantedgroup=' + currentWantedGroup,
+				type: 'GET',
+				dataType: 'json',
+				
+			})
+			.done(function(data) {
+				
+				if (!data.length) {
+					bNoMore = true;
+					return;
+				}
+
+				/*var innerHTML = ''; */
+				/* insert innerhtml */
+				data.forEach(function (value, index, array) {
+					if (index % 2 == 0) {
+						directionClass = "tl-left";
+					} else {
+						directionClass = "tl-right";
+					}
+
+					let template = $('.tl-template').html();
+					let temp = $(template);
+					temp.addClass(directionClass);
+					temp.find('.tl-image').attr('src', array[index]["image"]);
+					temp.find('.tl-image').attr('alt', array[index]["title"]);
+					temp.find('.tl-title').text(array[index]["title"]);
+					temp.find('.tl-introduction').text(array[index]["introduction"]);
+					temp.find('.tl-date').text('photographed on ' + array[index]["date"]);
+
+					/*innerHTML += '\
+					<div class="tl-box ' + directionClass + '"> \
+						<div class="tl-content"> \
+							<div class="tl-image-block"> \
+								<img src="' + array[index]["image"] + '" alt="' + array[index]["title"] + '" class="tl-image"> \
+							</div> \
+							<h2 class="tl-title">' + array[index]["title"] + '</h2> \
+							<p class="tl-introduction">' + array[index]["introduction"] + '</p> \
+							<div class="tl-extra-info"> \
+								<time class="tl-date">photographed on ' + array[index]["date"] + '</time> \
+							</div> \
+						</div> \
+						<div class="tl-icon"> \
+							<i class="fa fa-camera" aria-hidden="true"></i> \
+						</div> \
+					</div> ';*/
+					$('.time-line').append(temp);
+				});
+				
+				/* $('.time-line').append(innerHTML); */
+			})
+			.fail(function(jqXHR, textStatus) {
+				console.log("ajax: 请求图片 失败" + textStatus);
+			});
+		},
+
+		/**
+		 * respond to the click of showmore
+		 * @return {void} 
+		 */
+		showMorePhoto = function () {
+			/* 向服务器请求数据，新添加文章块 */
+			if (!bNoMore) {
+				currentWantedGroup++;
+
+				showPhotoBlock();
+
+				console.log("showMorePhoto: " + currentWantedGroup);
+			} else {
+				console.log("No more articles");
+			}
+		},
+
+		/**
+		 * display or hide pop-up image
+		 * @param  {bool} bShow 
+		 * @return {void}       
+		 */
+		popupImage = function (bShow) {
+			if (bShow) {
+				$('.pop-up').fadeIn(200);
+			} else
+			{
+				$('.pop-up').fadeOut(200);			
+			}
+		},
+
+		/**
+		 * set up url & title
+		 * @param {string} imgUrl   
+		 * @param {string} imgTitle 
+		 */
+		setPopupImg = function (imgUrl, imgTitle) {
+			var popUp = $('.pop-up');
+			var img = popUp.find('img');
+			var title = popUp.find('h2');
+
+			img.attr('src',imgUrl);
+			img.attr('alt',imgTitle);
+			title.html(imgTitle);
+		};
+
+	return {
+
+		showPhotoBlock: showPhotoBlock,
+
+		showMorePhoto: showMorePhoto,
+
+		setPopupImg: setPopupImg,
+
+		popupImage: popupImage
+	};
+});

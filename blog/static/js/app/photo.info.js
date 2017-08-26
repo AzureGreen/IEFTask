@@ -23,7 +23,7 @@ define(['jquery'], function ($) {
 					return;
 				}
 
-				var innerHTML = '';
+				/*var innerHTML = ''; */
 				/* insert innerhtml */
 				data.forEach(function (value, index, array) {
 					if (index % 2 == 0) {
@@ -32,7 +32,16 @@ define(['jquery'], function ($) {
 						directionClass = "tl-right";
 					}
 
-					innerHTML += '\
+					let template = $('.tl-template').html();
+					let temp = $(template);
+					temp.addClass(directionClass);
+					temp.find('.tl-image').attr('src', array[index]["image"]);
+					temp.find('.tl-image').attr('alt', array[index]["title"]);
+					temp.find('.tl-title').text(array[index]["title"]);
+					temp.find('.tl-introduction').text(array[index]["introduction"]);
+					temp.find('.tl-date').text('photographed on ' + array[index]["date"]);
+
+					/*innerHTML += '\
 					<div class="tl-box ' + directionClass + '"> \
 						<div class="tl-content"> \
 							<div class="tl-image-block"> \
@@ -47,10 +56,11 @@ define(['jquery'], function ($) {
 						<div class="tl-icon"> \
 							<i class="fa fa-camera" aria-hidden="true"></i> \
 						</div> \
-					</div> ';
+					</div> ';*/
+					$('.time-line').append(temp);
 				});
 				
-				$('.time-line').append(innerHTML);
+				/* $('.time-line').append(innerHTML); */
 			})
 			.fail(function(jqXHR, textStatus) {
 				console.log("ajax: 请求图片 失败" + textStatus);

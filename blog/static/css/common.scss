@@ -32,7 +32,7 @@ h3, h3 span {
 	@include mediaSize(font-size, 2.4rem, 2.2rem, 2rem);
 }
 
-p, span, time, code, ul li, ol li, a {
+p, span, time, code, ul li, ol li, a, table {
     text-overflow: ellipsis;
     word-break: break-all;
     font-family: consolas,Menlo,PingFang SC,Microsoft YaHei,monospace;
@@ -55,6 +55,14 @@ header {
 a {
 	text-decoration: none;
 	display: inline-block;
+}
+
+table {
+	text-align: left;
+	td {
+		padding-right: 2rem;
+		padding-bottom: 0.5rem;
+	}
 }
 
 .text-center {
