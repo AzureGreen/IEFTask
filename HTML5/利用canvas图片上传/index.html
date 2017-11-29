@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>利用canvas长传图片</title>
+</head>
+<body>
+<label for="uploadpic">
+    <input type="file" name="uploadpic" id="uploadpic" accept="image/jpeg,image/gif,image/png">
+</label>
+<img src="" alt="上传图片">
+
+<script>
+
+    var eleFile = document.getElementById('uploadpic'),
+        eleImg = document.querySelector('img');
+        fileReader = new FileReader(),
+        img = new Image(),
+        canvas = document.createElement('canvas'),     // 压缩图片canvas
+        context = canvas.getContext('2d'),
+        dataURL = null,
+        endURL = 'http://localhost:8080/uploadpic';
+
+    // base64格式图片加载完成
+    img.onload = event => {
+        let originalWidth = img.width,
+            originalHeight = img.height,
+            maxWidth = 400,      // 400 * 400
+            maxHeight = 400;
+            canvas.width = originalWidth,
+            canvas.height = originalHeight;
+
+        if (originalWidth > maxWidth || originalHeight > maxHeight) {
+            // 超过 400 * 400 限制了
+            if (originalWidth / originalHeight > maxWidth / maxHeight) {
+                // wider
+                canvas.width = maxWidth;
+                canvas.height = Math.round(maxWidth * (originalHeight / originalWidth));  // 已知宽比例算出高
+            } else {
+                // heighter
+                canvas.height = maxHeight;
+                canvas.width = Math.round(maxHeight * (originalWidth / originalHeight));  // 已知高比例算出宽
+            }
+        }
+
+        // canvas画图
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(img, 0, 0, canvas.width, canvas.height);  // 压缩
+
+        // 
+        dataURL = canvas.toDataURL('image/jpeg');
+        
+        fetch(endURL, {
+            method: 'post',
+            headers: {
+              "Content-type": "application/x-www-form-urlencoded; charset=UTF-8" 
+            },
+            body: 'pic=' + dataURL
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            eleImg.src = data.pic;
+        }).catch(err => {
+            console.log('parsing failed', err);
+        });
+    }
+
+    // base64化 获得原图尺寸，按比例压缩
+    fileReader.onload = event => {
+        img.src = event.target.result;
+    }
+
+    eleFile.addEventListener('change', event => {
+        let fileObj = event.target.files[0],
+            allowedFileType = '.jpg,.gif,.bmp,.png, .jpeg';
+            fileExt = fileExt = fileObj.name.substr(fileObj.name.lastIndexOf('.')).toLowerCase();
+        
+        // 简单判断下文件类型(img)
+        if (allowedFileType.indexOf(fileExt) >= 0 &&
+            fileObj.type.indexOf('image') == 0) {
+                
+                fileReader.readAsDataURL(fileObj);
+        }
+    });
+
+</script>
+</body>
+</html>
